@@ -1,13 +1,73 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Space Mono', monospace;
+  background-color: black;
+  color: #F3EFEE;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "John and Nicholas stood near the back door, considering how best to speak in private. They were noWhat is this website for? Whether you want to count the book's words or past your text, Word Counter is going to help you. It's an excellent tool for learning a language and preparing to read text that contains words you don't know yet.t the only ones to have ventured outside. A handful of younger boys were playing marbles on a patch of dirt nearby, and over near the gazebo steps sat two exhausted-looking girls with a jump rope, waiting for a third girl to come out and make a game. In the gazebo itself, watching over them all, was a petite blonde woman in a peach-colored gingham dress. She was pacing back and forth with tiny steps, as if her dress were very tight around her ankles, although in fact it did not quite reach her ankles and did not appear tight in the least.";
+  font-family: Georgia, sans-serif;
+  font-size: 18.75rem;
+  color: #F3EFEE;
+  position: absolute;
+  width: 300vw;
+  left: -50vw;
+  font-weight: bold;
+  overflow: hidden;
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.content-container {
+  max-width: 1220px;
+  position: relative;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+/* Grain background */
+
+.grain:after {
+  /* content is required when using :after */
+  content: "";
+  /* The grainy image */
+  background-image: url("./img/old_moon_@2X.jpg");
+  /* Specify a height and width above and beyond the page header for movement */
+  height: 300%;
+  width: 300%;
+  /* We're using opacity in place of a transparent image */
+  opacity: 0.3;
+  /* We'll need this when the animation kicks in to hold the position of the texture */
+  position: fixed;
+  top: -100%;
+  left: -50%;
+  /* The animation */
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-5%, -10%) }
+  20% { transform:translate(-15%, 5%) }
+  30% { transform:translate(7%, -25%) }
+  40% { transform:translate(-5%, 25%) }
+  50% { transform:translate(-15%, 10%) }
+  60% { transform:translate(15%, 0%) }
+  70% { transform:translate(0%, 15%) }
+  80% { transform:translate(3%, 35%) }
+  90% { transform:translate(-10%, 10%) }
+}
+

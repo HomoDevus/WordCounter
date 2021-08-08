@@ -1,0 +1,86 @@
+button {
+    font-size: 1rem;
+    background-color: white;
+    padding: 0.3rem 1rem;
+    border: 2px solid black;
+    transition: 0.2s ease;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #201D1C;
+    color: #F7F5EE;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    color: #2B2B2B;
+}
+
+main hr {
+    color: black;
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    background-color: darkgrey; /* Modern Browsers */
+    margin: 0;
+}
+
+.last-hr {
+    margin-bottom: 20px;
+}
+
+.counter-field, .response {
+    z-index: 1;
+    background-color: white;
+    color: #DDD;
+    border-radius: 12px;
+    border: 2px solid black;
+}
+
+.counter-field {
+    flex: 2 1 auto;
+    padding: 24px 34px;
+    margin-right: 32px;
+}
+
+.counter-field__header {
+    display: flex;
+    justify-content: space-between;
+    color: #2B2B2B;
+}
+
+    .counter-field__header h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 0 0.875rem;
+    }
+
+    .counter-field__header label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .counter-field__header label input {
+        margin-right: 14px;
+    }
+
+.counter-field textarea {
+    color: #5E5B59;
+    width: calc(100% - 8px);
+    height: 328px;
+    resize: none;
+    outline: none;
+    margin-top: 8px;
+    padding: 4px;
+    border: 0;
+    background-color: #F3EFEE;
+    border-radius: 4px;
+}
+
+.response {
+    flex: 1 1 auto;
+}
