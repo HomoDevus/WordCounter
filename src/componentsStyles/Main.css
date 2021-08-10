@@ -1,3 +1,18 @@
+button {
+    font-size: 1rem;
+    background-color: white;
+    padding: 0.3rem 1rem;
+    border: 2px solid black;
+    transition: 0.2s ease;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #201D1C;
+    color: #F7F5EE;
+}
+
 main {
     display: flex;
     justify-content: space-between;
@@ -7,10 +22,14 @@ main {
 main hr {
     color: black;
     border: none;
-    height: 2px;
+    height: 1px;
     /* Set the hr color */
-    background-color: black; /* Modern Browsers */
+    background-color: darkgrey; /* Modern Browsers */
     margin: 0;
+}
+
+.last-hr {
+    margin-bottom: 20px;
 }
 
 .counter-field, .response {
@@ -51,10 +70,15 @@ main hr {
 
 .counter-field textarea {
     color: #5E5B59;
-    width: 100%;
+    width: calc(100% - 8px);
     height: 328px;
     resize: none;
     outline: none;
+    margin-top: 8px;
+    padding: 4px;
+    border: 0;
+    background-color: #F3EFEE;
+    border-radius: 4px;
 }
 
 .response {

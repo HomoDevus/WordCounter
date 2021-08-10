@@ -5,6 +5,7 @@ body {
   color: #F3EFEE;
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body::before {

@@ -9,7 +9,7 @@ function CounterField() {
             <CounterFieldHeader />
             <hr />
             <CounterFieldInput />
-            <hr />
+            <hr className='last-hr'/>
             <CounterFieldFooter />
         </div>
     )
