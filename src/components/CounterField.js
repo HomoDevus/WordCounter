@@ -5,11 +5,12 @@ import CounterFieldFooter from "./CounterFieldFooter";
 
 function CounterField() {
     return (
-        <div className='counter-field'>
-            <CounterFieldHeader />
-            <hr />
-            <CounterFieldInput />
-            <hr className='last-hr'/>
+        <div className="counter-field-outer">
+            <div className='counter-field'>
+                <CounterFieldHeader />
+                <hr />
+                <CounterFieldInput />
+            </div>
             <CounterFieldFooter />
         </div>
     )

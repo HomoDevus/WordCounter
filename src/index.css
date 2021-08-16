@@ -1,24 +1,13 @@
 body {
   margin: 0;
   font-family: 'Space Mono', monospace;
-  background-color: black;
-  color: #F3EFEE;
   position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-body::before {
-  content: "John and Nicholas stood near the back door, considering how best to speak in private. They were noWhat is this website for? Whether you want to count the book's words or past your text, Word Counter is going to help you. It's an excellent tool for learning a language and preparing to read text that contains words you don't know yet.t the only ones to have ventured outside. A handful of younger boys were playing marbles on a patch of dirt nearby, and over near the gazebo steps sat two exhausted-looking girls with a jump rope, waiting for a third girl to come out and make a game. In the gazebo itself, watching over them all, was a petite blonde woman in a peach-colored gingham dress. She was pacing back and forth with tiny steps, as if her dress were very tight around her ankles, although in fact it did not quite reach her ankles and did not appear tight in the least.";
-  font-family: Georgia, sans-serif;
-  font-size: 18.75rem;
-  color: #F3EFEE;
-  position: absolute;
-  width: 300vw;
-  left: -50vw;
-  font-weight: bold;
-  overflow: hidden;
-  height: 100%;
+.page-background {
+  font-family: 'Georgia', serif;
+  
 }
 
 a {

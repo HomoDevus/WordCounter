@@ -1,17 +1,20 @@
-/*Test*/
 button {
-    font-size: 1rem;
-    background-color: white;
-    padding: 0.3rem 1rem;
-    border: 2px solid black;
+    font-size: 0.9rem;
+    font-weight: bold;
+    /*background-color: white;*/
+    padding: 1rem 1.4rem;
+    /*border: 1px solid black;*/
+    border-radius: 12px;
     transition: 0.2s ease;
     color: black;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
 }
 
 button:hover {
-    background-color: #201D1C;
-    color: #F7F5EE;
+    background-color: #8fc3c8;
+    /*color: #F7F5EE;*/
 }
 
 main {
@@ -30,21 +33,24 @@ main hr {
 }
 
 .last-hr {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
-.counter-field, .response {
+.counter-field-outer, .response {
     z-index: 1;
-    background-color: white;
+    background-color: #F7F5EE;
     color: #DDD;
     border-radius: 12px;
-    border: 2px solid black;
+    border: 1px solid black;
+}
+
+.counter-field-outer {
+    margin-right: 32px;
+    flex: 2 1 auto;
 }
 
 .counter-field {
-    flex: 2 1 auto;
-    padding: 24px 34px;
-    margin-right: 32px;
+    padding: 24px 34px 0 34px;
 }
 
 .counter-field__header {
@@ -80,6 +86,15 @@ main hr {
     border: 0;
     background-color: #F3EFEE;
     border-radius: 4px;
+}
+
+.counter-field-outer button {
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid black;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
 }
 
 .response {
