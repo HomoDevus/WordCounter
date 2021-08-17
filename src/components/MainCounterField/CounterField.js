@@ -3,12 +3,12 @@ import CounterFieldHeader from "./CounterFieldHeader";
 import CounterFieldInput from "./CounterFieldInput";
 import CounterFieldFooter from "./CounterFieldFooter";
 
-function CounterField() {
+function CounterField({setTextArea}, {textArea}) {
     return (
         <div className='counter-field'>
             <CounterFieldHeader />
             <hr />
-            <CounterFieldInput />
+            <CounterFieldInput textArea={textArea} setTextArea={setTextArea} />
             <hr className='last-hr'/>
             <CounterFieldFooter />
         </div>

@@ -1,0 +1,63 @@
+.response {
+    padding: 14px 30px;
+    text-align: start;
+}
+
+.response hr {
+    margin-top: 12px;
+}
+
+.response__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.response__item {
+    display: grid;
+    grid-template-columns: 70% 1fr 1fr;
+    padding-top: 8px;
+}
+
+.response__percent {
+    text-align: end;
+}
+
+/* Word difficulty styles */
+
+.response__header > div {
+    display: flex;
+    align-items: center;
+}
+
+.response__header > div::before {
+    content: '';
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.response__header_elementary::before {
+    background-color: #4F914D;
+}
+
+.response__header_intermediate::before {
+    background-color: #B1B83B;
+}
+
+.response__header_advance::before {
+    background-color: #DE6749;
+}
+
+.elementary {
+    background-color: #4F914D;
+}
+
+.intermediate {
+    background-color: #B1B83B;
+}
+
+.advanced {
+    background-color: #DE6749;
+}

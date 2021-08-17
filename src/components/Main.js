@@ -1,12 +1,14 @@
-import React from "react";
-import CounterField from './CounterField';
-import Response from "./Response";
+import React, {useState} from "react";
+import CounterField from './MainCounterField/CounterField';
+import Response from "./MainResponse/Response";
 import '../componentsStyles/Main.css';
 
 function Main() {
+    const [textArea, setTextArea] = useState('');
+
     return (
         <main className='content-container'>
-            <CounterField />
+            <CounterField textArea={textArea} setTextArea={setTextArea}/>
             <Response />
         </main>
     )
