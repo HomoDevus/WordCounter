@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import CounterField from './MainCounterField/CounterField';
 import Response from "./MainResponse/Response";
 import '../componentsStyles/Main.css';
