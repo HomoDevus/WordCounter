@@ -1,16 +1,17 @@
 import React from "react";
 import CounterFieldHeader from "./CounterFieldHeader";
 import CounterFieldInput from "./CounterFieldInput";
-import CounterFieldFooter from "./CounterFieldFooter";
 
-function CounterField({setTextArea}, {textArea}) {
+function CounterField({textArea, setTextArea, countedWords, setCountedWords}) {
     return (
         <div className='counter-field'>
-            <CounterFieldHeader />
+            <CounterFieldHeader countedWords={countedWords} textArea={textArea}/>
             <hr />
-            <CounterFieldInput textArea={textArea} setTextArea={setTextArea} />
+            <CounterFieldInput textArea={textArea} setTextArea={setTextArea} setCountedWords={setCountedWords}/>
             <hr className='last-hr'/>
-            <CounterFieldFooter />
+            <div className='counter-field__footer'>
+                <button>Count</button>
+            </div>
         </div>
     )
 }
