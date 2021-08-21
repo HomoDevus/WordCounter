@@ -6,6 +6,7 @@ import '../componentsStyles/Main.css';
 function Main() {
     const [textArea, setTextArea] = useState('');
     const [countedWords, setCountedWords] = useState({});
+    const [wordsAmount, setWordsAmount] = useState(0);
 
     return (
         <main className='content-container'>
@@ -14,8 +15,10 @@ function Main() {
                 setTextArea={setTextArea}
                 countedWords={countedWords}
                 setCountedWords={setCountedWords}
+                wordsAmount={wordsAmount}
+                setWordsAmount={setWordsAmount}
             />
-            <Response countedWords={countedWords}/>
+            <Response countedWords={countedWords} wordsAmount={wordsAmount}/>
         </main>
     )
 }
