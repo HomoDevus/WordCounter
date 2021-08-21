@@ -3,34 +3,29 @@ button {
     font-size: 1rem;
     background-color: white;
     padding: 0.3rem 1rem;
-    border: 2px solid black;
+    border: 0;
     transition: 0.2s ease;
     color: black;
     cursor: pointer;
+    height: 50px;
+    width: 100%;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+
 }
 
-button:hover {
-    background-color: #201D1C;
-    color: #F7F5EE;
+.counter-field button {
+    border-radius: 0 0 0 12px;
+}
+
+button:hover, .counter-field__footer__question:hover {
+    background-color: #F7F5EE;
 }
 
 main {
     display: flex;
     justify-content: space-between;
     color: #2B2B2B;
-}
-
-main hr {
-    color: black;
-    border: none;
-    height: 1px;
-    /* Set the hr color */
-    background-color: darkgrey; /* Modern Browsers */
-    margin: 0;
-}
-
-.last-hr {
-    margin-bottom: 20px;
 }
 
 .counter-field, .response {
@@ -42,20 +37,25 @@ main hr {
 
 .counter-field {
     flex: 8 1 auto;
-    padding: 24px 34px;
     margin-right: 32px;
 }
 
+.counter-field__main {
+    padding: 24px 30px;
+}
+
 .counter-field__header {
-    display: flex;
-    justify-content: space-between;
     color: #2B2B2B;
+}
+
+.counter-field__header > * {
+    display: inline-block;
 }
 
     .counter-field__heading {
         font-size: 1.5rem;
         font-weight: bold;
-        margin: 0 0 0.875rem;
+        margin: 0 50px 0.875rem 0;
     }
 
     .counter-field__header label {
@@ -83,6 +83,16 @@ main hr {
     border-radius: 4px;
 }
 
-.response {
-    flex: 1 1 auto;
+.counter-field__footer {
+    display: flex;
+}
+
+.counter-field__footer__question {
+    width: 50px;
+    line-height: 50px;
+    border-left: 1px solid darkgray;
+    border-bottom-right-radius: 12px;
+    transition: 0.2s ease;
+    cursor: help;
+    text-align: center;
 }

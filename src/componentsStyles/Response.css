@@ -1,28 +1,33 @@
 .response {
-    padding: 14px 30px;
+    padding: 14px 0;
     text-align: start;
     position: relative;
+    flex: 1 1 auto;
 }
 
-.response hr {
-    margin-top: 12px;
+.response__header-separator {
+    margin: 12px 0 0 0;
 }
 
 .response__header {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 0 30px;
 }
 
 .response__word-list {
-    max-height: 384px;
+    height: 400px;
     overflow: auto;
-    padding-right: 8px;
+}
+
+.response__item:nth-child(even) {
+    background-color: #00000008;
 }
 
 .response__item {
     display: grid;
     grid-template-columns: 70% 1fr 1fr;
-    padding-top: 8px;
+    padding: 4px 30px;
 }
 
 .response__percent {
@@ -67,4 +72,8 @@
 
 .advanced {
     background-color: #DE6749;
+}
+
+.unknown {
+    /*background-color: #b2b839;*/
 }

@@ -26,10 +26,11 @@ function Response({countedWords, wordsAmount}) {
                 <div className='response__header_intermediate'>Intermediate</div>
                 <div className='response__header_advance'>Advance</div>
             </div>
-            <hr />
+            <hr className='response__header-separator'/>
             <div className='response__word-list'>
                 {wordElements}
             </div>
+            <hr />
         </div>
     )
 }
