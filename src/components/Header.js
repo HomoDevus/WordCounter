@@ -19,7 +19,6 @@ function Header() {
                 replaceByLetter(++pos, replaceTo, endCallback);
             } else {
                 if (endCallback !== undefined) {
-                    console.log(endCallback)
                     endCallback();
                 }
             }

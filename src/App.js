@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import SmartCountExplanation from "./components/SmartCountExplanation";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 function App() {
   const [smartCountPopUp, setSmartCountPopUp] = useState(false);

@@ -3,17 +3,20 @@ export default class Book {
         this.txt = txt;
         this.pos = 0;
         this.separatedTxt = [];
-        this.separateBook();
     }
 
+    /**
+     * Function that start's process of sending request to an API and returns answer
+     * @returns {Promise<*|*[]>}
+     */
     async getLemmas() {
+        this.separateBook();
         let results = await this.groupRequests();
         results = this.connectObjects(results);
         return results;
     }
 
-    // ========================= Разделение текста =========================
-
+    // ========================= Separating text in order to API accepted it =========================
     // Разделяет книгу на части каждые 3800 символов так как API не принимает слишком большие запросы
     // Запускается при создании элемента класса
     separateBook() {
@@ -37,7 +40,8 @@ export default class Book {
             letterPos++;
         }
     }
-
+    // =========================================================================
+    // ============== Sending request to API and getting answer and preparing for output ==============
     /**
      * Groups requests into array and sending them to the API one after another.
      * Returns array of results with objects as API answer.
@@ -81,7 +85,7 @@ export default class Book {
                 }
             }
         }
-            return connectedLemmas;
+        return connectedLemmas;
     }
 
     // Function that sends API request
@@ -95,4 +99,5 @@ export default class Book {
         })
         return request.json()
     }
+    // ======================================================================================================
 }

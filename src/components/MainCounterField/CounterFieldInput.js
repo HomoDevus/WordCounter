@@ -1,31 +1,22 @@
 import React, {useEffect} from "react";
 
-function CounterFieldInput({setTextArea, textArea, setCountedWords, setWordsAmount, countedWords}) {
+function CounterFieldInput({setTextArea, textArea, setCountedWords, setWordsAmount, countedWords, liveCount, setCharactersAmount, updateResponse, setUpdateResponse}) {
     useEffect(() => {
-        setCountedWords(countWords());
-    }, [textArea]);
-
-    useEffect(() => {
-        setWordsAmount(estimateWords());
-    }, [countedWords]);
-
-    /**
-     * Count words from string. Returns object where key is a word and value is number of entries of this word.
-     * @returns {{[p: string]: unknown}}
-     */
-    function countWords() {
-        let clearTA = textArea.replace(/[.,#!$%^&*;:{}=\-_`~()1234567890]/g,"").replace(/\s{2,}/g," ").split(' ');
-        clearTA = clearTA.filter((word) => word !== ' ' && word !== '');
-        let count = {};
-        for (let word of clearTA) {
-            word in count ? count[word] += 1: count[word] = 1;
+        if (liveCount) {
+            setCountedWords(sortByEntries(countWordsEntries()));
+            setCharactersAmount(textArea.length);
+        } else if (updateResponse) {
+            setCountedWords(sortByEntries(updateResponse));
+            setCharactersAmount(textArea.length);
         }
-        // Object sort
-        count = Object.fromEntries(
-            Object.entries(count).sort(([,a],[,b]) => b-a)
-        );
-        return count;
-    }
+    }, [textArea, liveCount, updateResponse]);
+
+    useEffect(() => {
+        if (liveCount || updateResponse) {
+            setWordsAmount(estimateWords());
+            setUpdateResponse(false);
+        }
+    }, [countedWords]);
 
     function estimateWords() {
         let wordsAmount = 0;
@@ -33,6 +24,26 @@ function CounterFieldInput({setTextArea, textArea, setCountedWords, setWordsAmou
             wordsAmount += entries;
         }
         return wordsAmount;
+    }
+
+    function sortByEntries(countedWords) {
+        return Object.fromEntries(
+            Object.entries(countedWords).sort(([, a], [, b]) => b - a)
+        );
+    }
+
+    /**
+     * Count words from string. Returns object where key is a word and value is number of entries of this word.
+     * @returns {{[p: string]: unknown}}
+     */
+    function countWordsEntries() {
+        let clearTxt = textArea.replace(/[.,#!$%^&*;:{}=\-_`~()1234567890]/g, "").replace(/\s{2,}/g, " ").split(' ');
+        clearTxt = clearTxt.filter((word) => word !== ' ' && word !== '');
+        let count = {};
+        for (let word of clearTxt) {
+            word in count ? count[word] += 1 : count[word] = 1;
+        }
+        return count;
     }
 
     function handleChange(e) {

@@ -10,7 +10,7 @@ function SmartCountExplanation({setSmartCountPopUp}) {
                 alt='close sign'
                 onClick={() => setSmartCountPopUp(false)}
             />
-            <div className='smart-count-explanation__inner'>
+            <div className='smart-count-explanation__inner noselect'>
                 <h3>What is Smart Count?</h3>
                 <p>Smart Count option will count word's different forms as it's infinitive.
                     So that word went will be counted as go.</p>

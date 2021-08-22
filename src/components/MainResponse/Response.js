@@ -9,8 +9,6 @@ function Response({countedWords, wordsAmount}) {
         let wordsUpdate = [];
         let i = 0;
         for (let [word, entries] of Object.entries(countedWords)) {
-            console.log(entries, wordsAmount)
-            console.log(entries / wordsAmount)
             wordsUpdate.push(
                 <ResponseWord key={i} word={word} entries={entries} precent={(entries / wordsAmount * 100).toFixed(1)}/>
             )
