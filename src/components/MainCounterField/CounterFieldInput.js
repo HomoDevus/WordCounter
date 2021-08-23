@@ -1,6 +1,17 @@
 import React, {useEffect} from "react";
+import DragAndDrop from "../DragAndDrop";
 
-function CounterFieldInput({setTextArea, textArea, setCountedWords, setWordsAmount, countedWords, liveCount, setCharactersAmount, updateResponse, setUpdateResponse}) {
+function CounterFieldInput({
+   setTextArea,
+   textArea,
+   setCountedWords,
+   setWordsAmount,
+   countedWords,
+   liveCount,
+   setCharactersAmount,
+   updateResponse,
+   setUpdateResponse
+}) {
     useEffect(() => {
         if (liveCount) {
             setCountedWords(sortByEntries(countWordsEntries()));
@@ -50,8 +61,14 @@ function CounterFieldInput({setTextArea, textArea, setCountedWords, setWordsAmou
         setTextArea(e.target.value);
     }
 
+    function test(file) {
+        console.log(file)
+    }
+
     return (
-        <textarea className='counter-field__input' value={textArea} onChange={handleChange} />
+        <DragAndDrop callback={test}>
+            <textarea className='counter-field__input' value={textArea} onChange={handleChange}/>
+        </DragAndDrop>
     )
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-function CounterFieldHeader({textArea, wordsAmount, liveCount, setLiveCount, charactersAmount}) {
+function CounterFieldHeader({wordsAmount, liveCount, setLiveCount, charactersAmount}) {
     function handleEvent(e) {
         setLiveCount(e.target.checked);
     }

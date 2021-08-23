@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import CounterFieldHeader from "./CounterFieldHeader";
 import CounterFieldInput from "./CounterFieldInput";
-import '../../componentsStyles/smartCount.css';
+import '../../componentsStyles/SmartCountExplanation.css';
 import Book from "../../functions/sendRequest";
 
 function CounterField({
