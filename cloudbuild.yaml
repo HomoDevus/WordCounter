@@ -9,5 +9,5 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
   # Deploy
-  - name: 'gcr.io/$PROJECT_ID/firebase'
+  - name: 'gcr.io/word-counter-324015/firebase'
     args: ['deploy']
