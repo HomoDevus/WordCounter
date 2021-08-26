@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import DragAndDrop from "../DragAndDrop";
-import { parseEpub } from '@gxl/epub-parser';
 
 function CounterFieldInput({
    setTextArea,
@@ -93,4 +92,4 @@ function CounterFieldInput({
     )
 }
 
-export default
+export default CounterFieldInput
