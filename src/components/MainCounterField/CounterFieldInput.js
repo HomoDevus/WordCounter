@@ -93,4 +93,4 @@ function CounterFieldInput({
     )
 }
 
-export default
+export default CounterFieldInput
