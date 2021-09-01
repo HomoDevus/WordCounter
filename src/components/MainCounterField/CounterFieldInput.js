@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import DragAndDrop from "../DragAndDrop";
-import { parseEpub } from '@gxl/epub-parser';
+import { parseEpub } from  '@gxl/epub-parser';
 
 function CounterFieldInput({
    setTextArea,
@@ -67,14 +67,10 @@ function CounterFieldInput({
         file = file[0];
         if (file.size > 5242880) {return alert('File size should be less than 5MB')}
         console.log(file)
-        console.log(URL.createObjectURL(file))
-        readFileContent(file).then(content => {
-            console.log(content)
-        }).catch(error => console.log(error))
-        // const epubObj = parseEpub('../../Books/avidreaders.ru__the-veldt.epub', {
-        //     type: 'path',
-        // })
-        // console.log(epubObj)
+        const epubObj = parseEpub(URL.createObjectURL(file), {
+            type: 'path',
+        })
+        console.log(epubObj)
     }
 
     function readFileContent(file) {
@@ -94,3 +90,5 @@ function CounterFieldInput({
 }
 
 export default CounterFieldInput
+
+
