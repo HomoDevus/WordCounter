@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import DragAndDrop from "../DragAndDrop";
-import { parseEpub } from  '@gxl/epub-parser';
 
 function CounterFieldInput({
    setTextArea,
@@ -11,8 +10,10 @@ function CounterFieldInput({
    liveCount,
    setCharactersAmount,
    updateResponse,
-   setUpdateResponse
+   setUpdateResponse,
+   setSelectedFile
 }) {
+
     useEffect(() => {
         if (liveCount) {
             setCountedWords(sortByEntries(countWordsEntries()));
@@ -62,28 +63,17 @@ function CounterFieldInput({
         setTextArea(e.target.value);
     }
 
-    function handleFileUpload(file) {
+    function handleFileDrop(file) {
         if (file.length !== 1) {return alert('Please choose only one file')}
         file = file[0];
         if (file.size > 5242880) {return alert('File size should be less than 5MB')}
+        if (file.type !== 'application/epub+zip') {return  alert('Unsupported extension. Upload .epub file')}
         console.log(file)
-        const epubObj = parseEpub(URL.createObjectURL(file), {
-            type: 'path',
-        })
-        console.log(epubObj)
-    }
-
-    function readFileContent(file) {
-        const reader = new FileReader()
-        return new Promise((resolve, reject) => {
-            reader.onload = event => resolve(event.target.result)
-            reader.onerror = error => reject(error)
-            reader.readAsText(file)
-        })
+        setSelectedFile({file: file, loaded: 0})
     }
 
     return (
-        <DragAndDrop callback={handleFileUpload}>
+        <DragAndDrop callback={handleFileDrop}>
             <textarea className='counter-field__input' value={textArea} onChange={handleChange} />
         </DragAndDrop>
     )
