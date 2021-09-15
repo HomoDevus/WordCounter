@@ -74,7 +74,7 @@ function CounterFieldInput({
         const data = new FormData()
         data.append('file', file)
 
-        axios.post("http://localhost:8000/upload", data)
+        axios.post("/upload", data)
             .then(res => { // then print response status
                 setTextArea(res.data)
                 toast.success('upload success')

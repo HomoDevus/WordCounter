@@ -4,12 +4,14 @@ let multer = require('multer')
 let cors = require('cors');
 let {parseEpub, parseHTML} = require('@gxl/epub-parser')
 
+const PORT = 8080
+
 app.use(cors())
 
 const storage = multer.memoryStorage()
 let upload = multer({ storage: storage }).single('file')
 
-app.post('/upload',function(req, res) {
+app.post('/epub',function(req, res) {
     upload(req, res, (err) => {
         if (err instanceof multer.MulterError) {
             return res.status(500).json(err)
@@ -24,8 +26,8 @@ app.post('/upload',function(req, res) {
     })
 });
 
-app.listen(8000, function() {
-    console.log('App running on port 8000');
+app.listen(PORT, function() {
+    console.log(`App running on port ${PORT}`);
 });
 
 async function epubToString(buffer) {
