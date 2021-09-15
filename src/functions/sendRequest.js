@@ -20,8 +20,8 @@ export default class Book {
     // Разделяет книгу на части каждые 3800 символов так как API не принимает слишком большие запросы
     // Запускается при создании элемента класса
     separateBook() {
-        if (this.pos + 5000 < this.txt.length) {
-            let endPos = this.findSpace(this.pos + 5000);
+        if (this.pos + 4000 < this.txt.length) {
+            let endPos = this.findSpace(this.pos + 4000);
             this.separatedTxt.push(this.txt.slice(this.pos, endPos));
             this.separatedTxt = this.separatedTxt.filter((stroke) => stroke !== '\n');
             this.pos = endPos;

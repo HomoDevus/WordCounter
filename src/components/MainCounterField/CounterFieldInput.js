@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import DragAndDrop from "../DragAndDrop";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 function CounterFieldInput({
    setTextArea,
@@ -10,8 +12,7 @@ function CounterFieldInput({
    liveCount,
    setCharactersAmount,
    updateResponse,
-   setUpdateResponse,
-   setSelectedFile
+   setUpdateResponse
 }) {
 
     useEffect(() => {
@@ -68,8 +69,17 @@ function CounterFieldInput({
         file = file[0];
         if (file.size > 5242880) {return alert('File size should be less than 5MB')}
         if (file.type !== 'application/epub+zip') {return  alert('Unsupported extension. Upload .epub file')}
-        console.log(file)
-        setSelectedFile({file: file, loaded: 0})
+
+        // Turn epub to text and put it inside textarea
+        const data = new FormData()
+        data.append('file', file)
+
+        axios.post("http://localhost:8000/upload", data)
+            .then(res => { // then print response status
+                setTextArea(res.data)
+                toast.success('upload success')
+            })
+            .catch(e => console.log)
     }
 
     return (
