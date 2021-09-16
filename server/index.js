@@ -4,7 +4,7 @@ let multer = require('multer')
 let cors = require('cors');
 let {parseEpub, parseHTML} = require('@gxl/epub-parser')
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 app.use(cors())
 
