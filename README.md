@@ -1,3 +1,7 @@
+# Link to the app cloud
+
+https://wordcounter-324617.appspot.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
