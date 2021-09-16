@@ -2,7 +2,8 @@ let express = require('express');
 let app = express();
 let multer = require('multer')
 let cors = require('cors');
-let {parseEpub, parseHTML} = require('@gxl/epub-parser')
+let {parseEpub, parseHTML} = require('@gxl/epub-parser');
+const path = require('path');
 
 const PORT = process.env.PORT || 8080
 
@@ -10,6 +11,9 @@ app.use(cors())
 
 const storage = multer.memoryStorage()
 let upload = multer({ storage: storage }).single('file')
+
+// Have Node serve the files for built React app
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.post('/epub',function(req, res) {
     upload(req, res, (err) => {
@@ -24,6 +28,11 @@ app.post('/epub',function(req, res) {
                 return res.status(200).send(stringRes)
             })
     })
+});
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, function() {
