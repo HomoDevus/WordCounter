@@ -69,7 +69,7 @@ function CounterField({
             </div>
             <hr className='last-hr'/>
             <div className='counter-field__footer'>
-                <button onClick={smartCountStart}>Smart count</button>
+                <button className='button smart-count__button' onClick={smartCountStart}>Smart count</button>
                 <p onClick={() => {setSmartCountPopUp(true)}} className='counter-field__footer__question noselect'>?</p>
             </div>
         </div>

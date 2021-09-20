@@ -56,7 +56,7 @@ function DragAndDrop(props) {
             {dragging &&
             <div className='counter-field__input__drag-outer'>
                 <div className='counter-field__input__drag-inner'>
-                    <div>drop here :)</div>
+                    <div>Drop here to upload a file</div>
                 </div>
             </div>}
             {props.children}
