@@ -1,5 +1,5 @@
 import React from "react";
-import cancelIcon from '../img/cancel.svg';
+import cancelIcon from '../../img/cancel.svg';
 
 function SmartCountExplanation({setSmartCountPopUp}) {
     return (

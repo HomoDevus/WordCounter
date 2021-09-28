@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import DragAndDrop from "../DragAndDrop";
+import DragAndDrop from "../NotShownByDefault/DragAndDrop";
 import axios from "axios";
 import {toast} from "react-toastify";
-import CounterField from '../../componentsStyles/CounterField.css';
+import '../../componentsStyles/CounterField.css';
+import Loader from "../NotShownByDefault/Loader";
 
 function CounterFieldInput({
    setTextArea,
@@ -13,7 +14,9 @@ function CounterFieldInput({
    liveCount,
    setCharactersAmount,
    updateResponse,
-   setUpdateResponse
+   setUpdateResponse,
+   isLoading,
+   setIsLoading
 }) {
 
     // Counter words and characters amount live update
@@ -54,7 +57,7 @@ function CounterFieldInput({
      * @returns {{[p: string]: unknown}}
      */
     function countWordsEntries() {
-        let clearTxt = textArea.replace(/[.,#!$%^&*;:{}=\-_`~()1234567890]/g, "").replace(/\s{2,}/g, " ").split(' ');
+        let clearTxt = textArea.toLowerCase().replace(/[.,#!$%^&*;:{}=\-_`~()1234567890]/g, "").replace(/\s{2,}/g, " ").split(' ');
         clearTxt = clearTxt.filter((word) => word !== ' ' && word !== '');
         let count = {};
         for (let word of clearTxt) {
@@ -70,17 +73,28 @@ function CounterFieldInput({
     // Accept file on file drop or upload from input. Check for file length, siz and type.
     // Sends request to backend in order to translate .epub to string. String passed to textArea state.
     function handleFileDrop(file) {
-        console.log(file)
-        console.log(file.dataTransfer)
-        if (file.target !== undefined) {file = file.target}
-        console.log(file)
-        if (file.length !== 1) {return alert('Please choose only one file')}
+        if (file.target !== undefined) {
+            file = file.target.files
+        }
+        if (file === undefined) {
+            toast.error("You don't upload any file")
+            return false;
+        }
+        if (file.length !== 1) {
+            toast.error('Please choose only one file')
+            return false;
+        }
         file = file[0];
-        if (file.size > 5242880) {return alert('File size should be less than 5MB')}
-        if (file.type !== 'application/epub+zip') {return  alert('Unsupported extension. Upload .epub file')}
+        if (file.size > 5242880) {
+            toast.error('File size should be less than 5MB')
+            return false;
+        }
+        if (file.type !== 'application/epub+zip') {
+            toast.error('Unsupported extension. Upload .epub file')
+            return false;
+        }
 
-        // Apply upload styles
-
+        setIsLoading(true)
         // Turn epub to text and put it inside textarea
         const data = new FormData()
         data.append('file', file)
@@ -88,9 +102,13 @@ function CounterFieldInput({
         axios.post("/epub", data)
             .then(res => { // then print response status
                 setTextArea(res.data)
-                toast.success('upload success')
+                toast.success('Your file successfully uploaded')
             })
-            .catch(e => console.log)
+            .catch(e => {
+                toast.error("Server answered with an error")
+                console.log(e)
+            })
+            .finally(() => {setIsLoading(false)})
     }
 
     // File upload on button click. Uses button to trigger hidden input
@@ -100,7 +118,7 @@ function CounterFieldInput({
 
 
     return (
-        <DragAndDrop callback={handleFileDrop}>
+        <DragAndDrop callback={handleFileDrop} className="loader-area">
             <div className='text-area__settings'>
                 <p className='text-area__settings__format-heading'>Accepted formats:
                     <span className='text-area__settings__format'>.epub</span>
@@ -115,6 +133,7 @@ function CounterFieldInput({
                 </button>
             </div>
             <textarea className='counter-field__input' value={textArea} onChange={handleChange} />
+            {isLoading ? <Loader /> : null}
         </DragAndDrop>
     )
 }

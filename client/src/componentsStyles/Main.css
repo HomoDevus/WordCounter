@@ -13,12 +13,21 @@
 
 }
 
-.smart-count_button {
+.smart-count__button {
     border-radius: 0 0 0 12px;
+}
+
+.smart-count__button[disabled] {
+    color: gray;
+    cursor: not-allowed;
 }
 
 button:hover, .counter-field__footer__question:hover {
     background-color: #F7F5EE;
+}
+
+button[disabled]:hover {
+    background-color: inherit;
 }
 
 main {
@@ -28,7 +37,6 @@ main {
 }
 
 .counter-field, .response {
-    z-index: 1;
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .3);
@@ -57,10 +65,10 @@ main {
 
 .counter-field__input-outer {
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     margin-top: 8px;
-    height: 328px;
-    width: calc(100% - 8px);
+    height: 368px;
 }
 
 .counter-field__input {
@@ -74,6 +82,7 @@ main {
     border: 0;
     background-color: #F3EFEE;
     border-radius: 0 0 4px 4px;
+    overflow-x: hidden;
 }
 
     /* Drag and drop */
