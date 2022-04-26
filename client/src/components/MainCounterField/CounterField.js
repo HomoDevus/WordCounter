@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import CounterFieldHeader from "./CounterFieldHeader";
 import CounterFieldInput from "./CounterFieldInput";
 import '../../componentsStyles/SmartCountExplanation.css';
 import Book from "../../functions/sendRequest";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {success} from "concurrently/src/defaults";
+import axios from "axios";
 
 function CounterField({
         textArea,
@@ -16,6 +20,8 @@ function CounterField({
     const [liveCount, setLiveCount] = useState(true);
     const [charactersAmount, setCharactersAmount] = useState(textArea.length);
     const [updateResponse, setUpdateResponse] = useState(false);
+    const notification = useRef(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (!liveCount) {
@@ -27,17 +33,29 @@ function CounterField({
 
     function smartCountStart() {
         if (textArea) {
+            setIsLoading(true)
             setLiveCount(false);
             let request = new Book(textArea);
             request.getLemmas()
                 .then((ans) => {
-                    setUpdateResponse(ans);
-                }).catch(e => {console.error(e)})
+                    if (ans === undefined || ans == false) {
+                        toast.error("API didn't fetched any data")
+                    } else {
+                        setUpdateResponse(ans);
+                        toast.success('Words have been counted')
+                    }
+                }).catch(e => {
+                    toast.error('API answered with an error')
+                    console.error(e)
+                }).finally(() => {setIsLoading(false)})
         }
     }
 
     return (
         <div className='counter-field'>
+            <div className="form-group">
+                <ToastContainer useRef={notification}/>
+            </div>
             <div className='counter-field__main'>
                 <CounterFieldHeader
                     textArea={textArea}
@@ -57,12 +75,25 @@ function CounterField({
                     setCharactersAmount={setCharactersAmount}
                     updateResponse={updateResponse}
                     setUpdateResponse={setUpdateResponse}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
                 />
             </div>
             <hr className='last-hr'/>
             <div className='counter-field__footer'>
-                <button onClick={smartCountStart}>Smart count</button>
-                <p onClick={() => {setSmartCountPopUp(true)}} className='counter-field__footer__question noselect'>?</p>
+                <button
+                    className='button smart-count__button'
+                    onClick={smartCountStart}
+                    disabled={isLoading}
+                >
+                    Smart count
+                </button>
+                <p
+                    onClick={() => {setSmartCountPopUp(true)}}
+                    className='counter-field__footer__question noselect'
+                >
+                    ?
+                </p>
             </div>
         </div>
     )

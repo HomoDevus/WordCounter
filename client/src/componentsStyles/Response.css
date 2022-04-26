@@ -18,6 +18,7 @@
 .response__word-list {
     height: 400px;
     overflow: auto;
+    max-width: 372px;
 }
 
 .response__item:nth-child(even) {
@@ -26,12 +27,17 @@
 
 .response__item {
     display: grid;
-    grid-template-columns: 70% 1fr 1fr;
+    grid-template-columns: 10fr 1fr 1fr;
+    gap: 20px;
     padding: 4px 30px;
 }
 
 .response__percent {
     text-align: end;
+}
+
+.response__word {
+    word-break: break-all;
 }
 
 /* Word difficulty styles */
