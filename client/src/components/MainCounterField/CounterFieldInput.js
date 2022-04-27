@@ -70,7 +70,7 @@ function CounterFieldInput({
         setTextArea(e.target.value);
     }
 
-    // Accept file on file drop or upload from input. Check for file length, siz and type.
+    // Accept file on file drop or upload from input. Check for file length, size and type.
     // Sends request to backend in order to translate .epub to string. String passed to textArea state.
     function handleFileDrop(file) {
         if (file.target !== undefined) {

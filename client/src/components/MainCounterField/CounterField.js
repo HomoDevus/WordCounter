@@ -5,8 +5,6 @@ import '../../componentsStyles/SmartCountExplanation.css';
 import Book from "../../functions/sendRequest";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {success} from "concurrently/src/defaults";
-import axios from "axios";
 
 function CounterField({
         textArea,
@@ -88,12 +86,12 @@ function CounterField({
                 >
                     Smart count
                 </button>
-                <p
+                <button
                     onClick={() => {setSmartCountPopUp(true)}}
                     className='counter-field__footer__question noselect'
                 >
                     ?
-                </p>
+                </button>
             </div>
         </div>
     )

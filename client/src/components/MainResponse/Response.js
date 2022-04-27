@@ -11,7 +11,8 @@ function Response({countedWords, wordsAmount}) {
         for (let [word, entries] of Object.entries(countedWords)) {
             wordsUpdate.push(
                 <ResponseWord
-                    key={i} word={word}
+                    key={i}
+                    word={word}
                     entries={entries}
                     precent={(entries / wordsAmount * 100).toFixed(2)}
                 />

@@ -7,7 +7,6 @@ function Main({setSmartCountPopUp}) {
     const [textArea, setTextArea] = useState('');
     const [countedWords, setCountedWords] = useState({});
     const [wordsAmount, setWordsAmount] = useState(0);
-
     return (
         <main className='content-container'>
             <CounterField
