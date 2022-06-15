@@ -20,7 +20,7 @@ function Response({countedWords, wordsAmount}) {
             i += 1;
         }
         setWordElements(wordsUpdate)
-    }, [wordsAmount])
+    }, [wordsAmount, countedWords])
 
     return (
         <div className='response'>

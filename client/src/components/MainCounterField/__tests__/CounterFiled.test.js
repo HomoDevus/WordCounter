@@ -14,15 +14,15 @@ function componentRender() {
 }
 
 describe('CiunterField testing', () => {
-  test('question mark click opens a modal', () => {
+  beforeEach(() => {
     componentRender()
+  })
 
+  test('question mark click opens a modal', () => {
     expect(screen.getByText('?')).toBeEnabled()
   })
 
   test('liveCount toggle', () => {
-    componentRender()
-
     const liveCountCheckbox = screen.getByRole('checkbox')
 
     expect(liveCountCheckbox).toBeChecked()

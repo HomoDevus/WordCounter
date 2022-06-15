@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/client/javascript-lemmatizer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/client/public/javascript-lemmatizer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/client/src/javascript-lemmatizer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cloud-builders-community" vcs="Git" />
   </component>
 </project>

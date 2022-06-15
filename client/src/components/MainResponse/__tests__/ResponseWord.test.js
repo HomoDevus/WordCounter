@@ -10,25 +10,23 @@ function renderComponent() {
 }
 
 describe('ResponseWord component test', () => {
-  it('shows word correctly', () => {
+  beforeEach(() => {
     renderComponent()
+  })
 
+  it('shows word correctly', () => {
     const wordDiv = screen.getByText('Test')
 
     expect(wordDiv).toBeInTheDocument()
   })
 
   it('shows entries amount correctly', () => {
-    renderComponent()
-
     const entriesDiv = screen.getByText('32')
 
     expect(entriesDiv).toBeInTheDocument()
   })
 
   it('shows percent correctly', () => {
-    renderComponent()
-
     const percentDiv = screen.getByText('33%')
 
     expect(percentDiv).toBeInTheDocument()

@@ -6,37 +6,40 @@ function DragAndDrop(props) {
     const dropRef = useRef();
     let dragCounter = useRef(0);
 
-    function handleDrag(e) {
-        e.preventDefault()
-        e.stopPropagation()
-    }
-    function handleDragIn(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        dragCounter.current++;
-        if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-            setDragging(true)
-        }
-    }
-    function handleDragOut(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        dragCounter.current--;
-        if (dragCounter.current > 0) return
-        setDragging(false)
-    }
-    function handleDrop(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        setDragging(false)
-        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            props.callback(e.dataTransfer.files)
-            e.dataTransfer.clearData()
-            dragCounter.current = 0
-        }
-    }
-
     useEffect(() => {
+        function handleDrag(e) {
+            e.preventDefault()
+            e.stopPropagation()
+        }
+
+        function handleDragIn(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            dragCounter.current++;
+            if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+                setDragging(true)
+            }
+        }
+
+        function handleDragOut(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            dragCounter.current--;
+            if (dragCounter.current > 0) return
+            setDragging(false)
+        }
+
+        function handleDrop(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            setDragging(false)
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                props.callback(e.dataTransfer.files)
+                e.dataTransfer.clearData()
+                dragCounter.current = 0
+            }
+        }
+
         let div = dropRef.current;
         div.addEventListener('dragenter', handleDragIn)
         div.addEventListener('dragleave', handleDragOut)
@@ -49,7 +52,7 @@ function DragAndDrop(props) {
                 div.removeEventListener('drop', handleDrop)
             }
         )
-    }, [])
+    }, [props])
 
     return (
         <div className='counter-field__input-outer' ref={dropRef}>

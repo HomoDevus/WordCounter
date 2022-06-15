@@ -54,13 +54,14 @@ main {
 .counter-field__header {
     color: #2B2B2B;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 0.875rem;
 }
 
     .counter-field__heading {
         font-size: 1.5rem;
         font-weight: bold;
+        margin-right: 2em;
     }
 
 .counter-field__input-outer {
@@ -114,13 +115,16 @@ main {
 }
 
 .counter-field__footer__question {
-    width: 50px;
+    width: 100%;
     line-height: 50px;
-    border-left: 1px solid darkgray;
+    border: none;
     border-bottom-right-radius: 12px;
     transition: 0.2s ease;
     cursor: help;
     text-align: center;
+    background-color: white;
+    font-size: 1em;
+    font-family: "Space Mono", monospace;
 }
 
 /* Slider styles */
